@@ -122,6 +122,7 @@ Use XAMPP to easily install Apache, PHP, and MariaDB in one package.
   ```
 
 🌐 How to Use
+
 On Linux/macOS:
 1. Place all project files in your web server's root:
 
@@ -138,6 +139,7 @@ php -S localhost:8000
 - http://localhost/
 
 - or http://your-pi-ip/
+
 
 
 On Windows (XAMPP):
