@@ -14,7 +14,7 @@ Users can:
 
 PiConfess+
 
-├── index.html
+├── index.html (main websote interface)
 
 ├── main.js
 
