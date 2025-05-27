@@ -68,14 +68,21 @@ sudo apt install apache2 php mariadb-server php-mysql
   USE database_db;
   
   CREATE TABLE confessions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_nsfw BOOLEAN DEFAULT FALSE,
+    love_reacts INT DEFAULT 0,
+    laugh_reacts INT DEFAULT 0,
+    cry_reacts INT DEFAULT 0,
+    shy_reacts INT DEFAULT 0
+    confesstion TEXT NOT NULL,
+  );
+
+  CREATE TABLE reactions (
       id INT AUTO_INCREMENT PRIMARY KEY,
-      confession TEXT NOT NULL,
-      timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-      is_nsfw BOOLEAN DEFAULT FALSE,
-      love_reacts INT DEFAULT 0,
-      laugh_reacts INT DEFAULT 0,
-      cry_reacts INT DEFAULT 0,
-      shy_reacts INT DEFAULT 0
+      confession_id INT NOT NULL,
+      reaction_type ENUM('love', 'laugh', 'cry', 'shy') NOT NULL,
+      FOREIGN KEY (confession_id) REFERENCES confessions(id) ON DELETE CASCADE
   );
   ```
   Create a user (optional but recommended):
