@@ -45,13 +45,30 @@ Make sure you have the following installed:
 - [MariaDB or MySQL](https://mariadb.org/)
 
 On Raspberry Pi:
-
 ```
 bash
 
 sudo apt update
 sudo apt install apache2 php mariadb-server php-mysql
 ```
+
+🍎 On macOS:
+Install Homebrew if not already, then:
+```
+bash
+
+brew install php mariadb
+```
+To start services:
+```
+bash
+
+brew services start php
+brew services start mariadb
+```
+🪟 On Windows:
+Use XAMPP to easily install Apache, PHP, and MariaDB in one package.
+
 2. Set Up Database
   Log in to MariaDB:
   ```
