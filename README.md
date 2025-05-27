@@ -121,13 +121,36 @@ Use XAMPP to easily install Apache, PHP, and MariaDB in one package.
   $pass = 'your_password';
   ```
 
-🌐 Usage
-Place all project files in your Apache web root (e.g., /var/www/html/).
+🌐 How to Use
+On Linux/macOS:
+1. Place all project files in your web server's root:
 
-Access your app in a browser:
-http://localhost/ or http://<your-raspberry-pi-ip>/
+Default: /var/www/html/
 
-Start confessing!
+2. Start the PHP server (optional if not using Apache):
+```
+bash
+
+php -S localhost:8000
+```
+3. Access the site:
+
+- http://localhost/
+
+- or http://your-pi-ip/
+
+
+On Windows (XAMPP):
+Place files in C:\xampp\htdocs\PiConfess+
+
+Start Apache and MySQL from the XAMPP control panel.
+
+Open your browser:
+
+http://localhost/PiConfess+
+
+
+
 
 
 
