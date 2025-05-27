@@ -1,0 +1,26 @@
+CREATE DATABASE database_db;
+
+----------------------------------------------------
+
+CREATE TABLE confessions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    text TEXT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_nsfw BOOLEAN DEFAULT FALSE,
+    love_reacts INT DEFAULT 0,
+    laugh_reacts INT DEFAULT 0,
+    cry_reacts INT DEFAULT 0,
+    shy_reacts INT DEFAULT 0
+);
+
+CREATE TABLE reactions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    confession_id INT NOT NULL,
+    reaction_type ENUM('love', 'laugh', 'cry', 'shy') NOT NULL,
+    FOREIGN KEY (confession_id) REFERENCES confessions(id) ON DELETE CASCADE
+);
+
+----------------------------------------------------
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
+FLUSH PRIVILEGES;

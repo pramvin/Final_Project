@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PiConfess+</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PiConfess+</h1>
+        <form id="confessionForm" action="submit_confession.php" method="POST">
+            <textarea id="confessionText" name="confession_text" placeholder="Type your confession..." required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="submitMessage"></div>
+        <hr>
+        <input type="text" id="searchInput" placeholder="Search confessions...">
+        <button id="searchBtn">Search</button>
+        <div id="searchResults"></div>
+        <hr>
+        <h2>Trending Confessions</h2>
+        <div id="trendingConfessions"></div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

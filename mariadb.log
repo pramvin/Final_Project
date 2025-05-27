@@ -1,0 +1,4 @@
+/usr/local/bin/mysqld_safe: Deprecated program name. It will be removed in a future release, use 'mariadbd-safe' instead
+250527 15:34:18 mysqld_safe Logging to '/usr/local/var/MacBook-Pro-2.local.err'.
+250527 15:34:18 mysqld_safe Starting mariadbd daemon with databases from /usr/local/var
+/usr/local/bin/mariadbd-safe-helper: Can't create/write to file '/usr/local/var/MacBook-Pro-2.local.err' (Errcode: 13 "Permission denied")

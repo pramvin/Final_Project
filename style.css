@@ -1,0 +1,93 @@
+body {
+    background: #f7f7fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 32px 24px 24px 24px;
+}
+h1 {
+    text-align: center;
+    color: #4b4b6b;
+    margin-bottom: 24px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+textarea {
+    resize: vertical;
+    min-height: 60px;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+button {
+    background: #6c63ff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 0;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+button:hover {
+    background: #5548c8;
+}
+#submitMessage {
+    color: #388e3c;
+    margin-bottom: 10px;
+    min-height: 20px;
+}
+#searchInput {
+    width: 70%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-right: 8px;
+    font-size: 1rem;
+}
+#searchBtn {
+    padding: 8px 16px;
+}
+#searchResults, #trendingConfessions {
+    margin-top: 18px;
+}
+.confession {
+    background: #f1f1fa;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    position: relative;
+}
+.confession .reactions {
+    margin-top: 8px;
+    display: flex;
+    gap: 12px;
+}
+.reaction-btn {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: transform 0.1s;
+    color: #5548c8;
+}
+.reaction-btn:hover {
+    transform: scale(1.2);
+    background-color: transparent;
+}
+hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 24px 0;
+}
