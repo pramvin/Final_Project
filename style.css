@@ -1,9 +1,24 @@
 body {
-    background: #f7f7fa;
+    background: linear-gradient(-45deg, #00bbf9, #9b5de5, #f20089, #f26419);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
+
+@keyframes gradientFlow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
 .container {
     max-width: 600px;
     margin: 40px auto;
@@ -16,7 +31,32 @@ h1 {
     text-align: center;
     color: #4b4b6b;
     margin-bottom: 24px;
+    
 }
+
+.gradientText{
+    font-weight: bold;
+    background: linear-gradient(-45deg, #00bbf9, #9b5de5, #f20089, #f26419);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: gradientTextMove 5s ease infinite;
+}
+
+@keyframes gradientTextMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -30,19 +70,37 @@ textarea {
     border-radius: 6px;
     border: 1px solid #ccc;
 }
+
 button {
-    background: #6c63ff;
+    background: linear-gradient(-45deg, #00bbf9, #9b5de5, #f20089, #f26419);
+    background-size: 400% 400%; /* Important: allows room for animation */
+    animation: gradientMove 5s ease infinite;
     color: #fff;
     border: none;
     border-radius: 6px;
     padding: 10px 0;
     font-size: 1rem;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.6s ease;
 }
+/* Keyframes for the animated gradient */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 button:hover {
-    background: #5548c8;
+    animation: none;
+    background: #9b5de5;
 }
+
 #submitMessage {
     color: #388e3c;
     margin-bottom: 10px;
