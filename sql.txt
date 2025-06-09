@@ -4,7 +4,7 @@ CREATE DATABASE database_db;
 
 CREATE TABLE confessions (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    text TEXT NOT NULL,
+    confession TEXT NOT NULL,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     is_nsfw BOOLEAN DEFAULT FALSE,
     love_reacts INT DEFAULT 0,
