@@ -18,8 +18,7 @@ if ($query === '') {
     exit;
 }
 
-// Search using case-insensitive LIKE
-$stmt = $pdo->prepare("SELECT * FROM confessions WHERE confession LIKE ? AND is_nsfw = 0 ORDER BY timestamp DESC");
+$stmt = $pdo->prepare("SELECT * FROM confessions WHERE confession LIKE ? AND is_nsfw = 0 ORDER BY timestamp DESC LIMIT 20");
 $stmt->execute(['%' . $query . '%']);
 $confessions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
