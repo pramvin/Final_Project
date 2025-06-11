@@ -11,6 +11,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 header('Content-Type: application/json');
 require 'db.php';
 
-$stmt = $pdo->query('SELECT *, (love_reacts + laugh_reacts + cry_reacts + shy_reacts) AS total_reacts FROM confessions WHERE is_nsfw=0 ORDER BY total_reacts DESC, timestamp DESC LIMIT 3');
-$confessions = $stmt->fetchAll();
+$stmt = $pdo->query("
+    SELECT *, 
+        (love_reacts + laugh_reacts + cry_reacts + shy_reacts) AS total_reacts 
+    FROM confessions 
+    WHERE is_nsfw = 0 
+    ORDER BY total_reacts DESC, timestamp DESC 
+    LIMIT 3
+");
+
+$confessions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 echo json_encode(['confessions' => $confessions]);
+?>
