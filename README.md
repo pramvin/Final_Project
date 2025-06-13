@@ -1,161 +1,237 @@
-# PiConfess+
+# PiConfess+ 📢
 
-A simple web-based anonymous confession board built with **PHP**, **JavaScript**, and **MariaDB**, designed to run on devices like the **Raspberry Pi Zero 2 W**.
+**Anonymous Confession Web App powered by DietPi on Raspberry Pi Zero 2 W**
 
-Users can:
-- Submit anonymous confessions
-- React with emojis (❤️ 😂 😭 😳)
-- Search confessions
-- View trending posts
+PiConfess+ is a lightweight, web-based anonymous confession board designed to run efficiently on a Raspberry Pi Zero 2 W using the minimal DietPi OS. Users can submit anonymous messages and react to confessions using a set of expressive emoji-style buttons (love, laugh, cry, shy).
+
+---
+
+## 🔧 Project Goal
+
+To build a fully functional, headless-deployable LAMP web application (Linux + Apache + MariaDB + PHP) using low-cost hardware and efficient software. This project demonstrates embedded deployment, user interface design, database integration, and basic interaction features.
+
+---
+
+## 🧱 Features
+
+- Anonymous confession submission  
+- Live reaction system (❤️ 😂 😢 😳)  
+- Trending confessions filter  
+- Mobile-friendly interface  
+- Lightweight DietPi deployment  
+
+---
+
+## 🖼️ Application Architecture
+
+### Client Side
+- `index.html` — Main UI  
+- `main.js` — Handles submission, search, and reactions  
+- `style.css` — UI styling  
+
+### Server Side (PHP)
+- `submit_confession.php` — Save new confessions  
+- `react.php` — Add reactions  
+- `search.php` — Search confessions  
+- `trending.php` — Top reactions display  
+
+### Database Schema
+
+```sql
+CREATE TABLE confessions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    confession TEXT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    love_reacts INT DEFAULT 0,
+    laugh_reacts INT DEFAULT 0,
+    cry_reacts INT DEFAULT 0,
+    shy_reacts INT DEFAULT 0
+);
+```
+
+---
+
+## ⚙️ Installation Summary
+
+### 1. Download DietPi Image
+
+Go to [https://dietpi.com](https://dietpi.com) and download:
+
+```
+DietPi_RPi234-ARMv8-Bookworm.img.xz
+```
+
+### 2. Flash the Image to MicroSD Card
+
+Use [Etcher](https://etcher.io) (or similar) to flash the `.img.xz` file.
+
+### 3. Prepare Headless Installation
+
+- Copy all files from the `dietpi_headless-20250611` folder to the root of the MicroSD card.
+- Open `dietpi-wifi.txt.sample` and configure the following:
+
+#### Entry 0: Campus Wi-Fi
+```ini
+SSID=Your_Campus_WiFi
+KEY=Your_Student_ID_Password
+```
+
+#### Entry 1: Home Wi-Fi
+```ini
+SSID=Your_Home_WiFi
+KEY=Your_Home_Password
+```
+
+- Save the modified file as `dietpi-wifi.txt`.
+
+---
+
+## 🔌 Booting the System
+
+### Phase 1: Headless Setup
+
+- Insert the MicroSD card into the Pi.
+- Connect USB cable to the port labeled **USB** (not PWR).
+- The system will boot and run configuration scripts, then shut down.
+
+### Phase 2: Serial Console Setup
+
+- Unplug and replug the USB cable to restart.
+- Connect to serial using terminal:
+
+#### macOS
+```bash
+ls /dev/tty.* | grep -i usb
+# Example output: /dev/tty.usbmodem14401
+screen /dev/tty.usbmodem14401 115200
+```
+
+#### Windows
+Use Device Manager to find COM port, then open [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/) and connect via Serial.  
+Baud rate: `115200`
+
+#### Login
+```
+Username: root
+Password: dietpi
+```
+
+Change the password when prompted to: `1234567`
+
+---
+
+## 📦 Installing LAMP Stack and Git
+
+### Using DietPi Software Installer
+```bash
+dietpi-software
+```
+
+- Scroll to:
+  ```
+  [ ] 76 LAMP: Apache + MariaDB + PHP
+  ```
+- Press Spacebar to mark it with `*`, then go back and press Enter to install.
+
+### After Installation
+```bash
+sudo systemctl status apache2
+sudo mysql_secure_installation
+sudo apt install git
+```
+
+---
+
+## 🚀 Deploying the Application
+
+### Clone the Project Repository
+
+```bash
+cd /var/www
+sudo git clone https://github.com/pramvin/Final_Project.git
+```
+
+### Move Project Files
+
+```bash
+sudo mkdir -p /var/www/html
+sudo mv /var/www/Final_Project/* /var/www/html/.
+sudo chown -R www-data:www-data /var/www/html
+sudo chmod -R 755 /var/www/html
+```
+
+---
+
+## 🛢️ Configuring the Database
+
+### Login to MariaDB
+
+```bash
+sudo mariadb -u root -p
+# Password: 12345678
+```
+
+### Commands
+
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'change_password';
+
+CREATE DATABASE database_db;
+USE database_db;
+
+CREATE TABLE confessions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    confession TEXT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    love_reacts INT DEFAULT 0,
+    laugh_reacts INT DEFAULT 0,
+    cry_reacts INT DEFAULT 0,
+    shy_reacts INT DEFAULT 0
+);
+
+SELECT * FROM confessions;
+```
+
+---
+
+## 🎥 Demo & Docs
+
+- 📽️ **Demo Video:** [Link to Presentation Video]([https://your-demo-video-link.com](https://www.youtube.com/watch?v=DwVm6SApvBs))
+- 📄 **Project Slides (PDF):** Located in the `doc/` folder of this repository
 
 ---
 
 ## 📁 Project Structure
 
-PiConfess+
-
-├── index.html (main websote interface)
-
+```
+Final_Project/
+├── index.html
 ├── main.js
-
 ├── style.css
-
 ├── submit_confession.php
-
-├── search.php
-
-├── trending.php
-
 ├── react.php
-
+├── search.php
+├── trending.php
 ├── db.php
-
-└── README.md
+├── sql.txt
+├── doc/
+```
 
 ---
 
-## 🚀 How to Run
+## 🔗 Links
 
-### 1. Install Requirements
+- 🔗 **GitHub Repository:** [https://github.com/pramvin/Final_Project](https://github.com/pramvin/Final_Project)
+- 🔗 **Presentation Video:** [https://www.youtube.com/watch?v=DwVm6SApvBs](https://www.youtube.com/watch?v=DwVm6SApvBs)
 
-Make sure you have the following installed:
+---
 
-- [Apache](https://httpd.apache.org/) or any web server
-- [PHP (>= 7.4)](https://www.php.net/)
-- [MariaDB or MySQL](https://mariadb.org/)
+## 👨‍💻 Author
 
-On Raspberry Pi:
-```
-bash
+- **Group: Steven Botak** — Developer & Presenter
 
-sudo apt update
-sudo apt install apache2 php mariadb-server php-mysql
-```
+---
 
-🍎 On macOS:
-Install Homebrew if not already, then:
-```
-bash
+## 📝 License
 
-brew install php mariadb
-```
-To start services:
-```
-bash
-
-brew services start php
-brew services start mariadb
-```
-🪟 On Windows:
-Use XAMPP to easily install Apache, PHP, and MariaDB in one package.
-
-2. Set Up Database
-  Log in to MariaDB:
-  ```
-  bash
-
-  sudo mariadb
-  ```
-
-  Create the database and table:
-  ```
-  sql
-
-  CREATE DATABASE database_db;
-  USE database_db;
-  
-  CREATE TABLE confessions (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    is_nsfw BOOLEAN DEFAULT FALSE,
-    love_reacts INT DEFAULT 0,
-    laugh_reacts INT DEFAULT 0,
-    cry_reacts INT DEFAULT 0,
-    shy_reacts INT DEFAULT 0
-    confesstion TEXT NOT NULL,
-  );
-
-  CREATE TABLE reactions (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      confession_id INT NOT NULL,
-      reaction_type ENUM('love', 'laugh', 'cry', 'shy') NOT NULL,
-      FOREIGN KEY (confession_id) REFERENCES confessions(id) ON DELETE CASCADE
-  );
-  ```
-  Create a user (optional but recommended):
-  ```
-  sql
-
-  CREATE USER 'your_user'@'localhost' IDENTIFIED BY 'your_password';
-  GRANT ALL PRIVILEGES ON database_db.* TO 'your_user'@'localhost';
-  FLUSH PRIVILEGES;
-  ```
-
-  Edit db.php with your DB credentials:
-  ```
-  php
-  
-  $host = 'localhost';
-  $db   = 'database_db';
-  $user = 'your_user';
-  $pass = 'your_password';
-  ```
-
-🌐 How to Use
-
-On Linux/macOS:
-1. Place all project files in your web server's root:
-
-Default: /var/www/html/
-
-2. Start the PHP server (optional if not using Apache):
-```
-bash
-
-php -S localhost:8000
-```
-3. Access the site:
-
-- http://localhost/
-
-- or http://your-pi-ip/
-
-
-
-On Windows (XAMPP):
-Place files in C:\xampp\htdocs\PiConfess+
-
-Start Apache and MySQL from the XAMPP control panel.
-
-Open your browser:
-
-http://localhost/PiConfess+
-
-
-
-
-
-
-
-
-
+This project is intended for academic demonstration only. No real data is collected or stored.
