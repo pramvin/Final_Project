@@ -196,8 +196,8 @@ SELECT * FROM confessions;
 
 ## 🎥 Demo & Docs
 
-- 📽️ **Demo Video:** [Link to Presentation Video]([https://your-demo-video-link.com](https://www.youtube.com/watch?v=DwVm6SApvBs))
-- 📄 **Project Slides (PDF):** Located in the `doc/` folder of this repository
+- 📽️ **Demo Video:** [Link to Presentation Video](https://www.youtube.com/watch?v=DwVm6SApvBs)
+- 📄 **Project Slides (PDF):** [View PDF](./doc/FINAL_PROJECT.pdf)
 
 ---
 
