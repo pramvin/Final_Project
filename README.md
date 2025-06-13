@@ -214,7 +214,13 @@ Final_Project/
 ├── trending.php
 ├── db.php
 ├── sql.txt
-├── doc/
+├── README.md
+├── Contributors.md
+├── Installation.md
+├── UserGuide.md
+├── AdminGuide.md
+└── doc/
+    └── FINAL_PROJECT.pdf
 ```
 
 ---
